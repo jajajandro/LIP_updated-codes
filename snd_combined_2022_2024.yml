@@ -1,0 +1,407 @@
+
+General:
+  Measurement: "SND_0mu_PRL"
+  POI: "Signal_norm"
+  HistogramFolder: "histograms/" # output histograms folder
+  InputPath: "input/{RegionPath}/{SamplePath}/"
+
+  Fixed:
+    - Name: "Luminosity_Scale_2022" # Must match the NormFactor name
+      Value: 1 # Set this to the desired luminosity scale for 2022
+    - Name: "Luminosity_Scale_2024" # Must match the NormFactor name
+      Value: 1  # Set this to the desired luminosity scale for 2024 (20 for trial, 118.6 for final)
+
+Regions:
+  - Name: "Signal_region_2022"
+    RegionPath: "2022"
+    Variable: "dens_sel"
+    Filter: "(dens_sel2 >= 20) & (dens_sel > 11000)"
+    Binning: [11000, 14000, 17000, 25000, 30000, 40000] 
+  - Name: "Signal_region_2024"
+    RegionPath: "2024"
+    Variable: "dens_sel"
+    Filter: "(dens_sel2 >= 20) & (dens_sel > 11000)"
+    Binning: [11000, 14000, 17000, 25000, 30000, 40000]
+
+Samples:
+  # Data and HadronBackground must be assigned to ALL regions they are used in.
+  # The HadronBackground was missing a Regions list.
+
+  - Name: "Data"
+    Tree: "snd_0mu_summaryTree"
+    SamplePath: "snd_0mu_summaryTree_data_full.root"
+    Data: True
+
+  - Name: "HadronBackground"
+    Tree: "snd_0mu_summaryTree"
+    SamplePath: "snd_0mu_summaryTree_hadron.root"
+    Weight: "weight"
+
+  - Name: "Signal"
+    Tree: "snd_0mu_summary"
+    #SamplePath: "snd_0mu_summaryTree_nu.root"
+    SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+    Weight: "weight"
+    Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+
+  - Name: "NumuBackground"
+    Tree: "snd_0mu_summary"
+    #SamplePath: "snd_0mu_summaryTree_nu.root"
+    SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+    Weight: "weight"
+    Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 14)"
+  
+  - Name: "NutauBackground"
+    Tree: "snd_0mu_summary"
+    #SamplePath: "snd_0mu_summaryTree_nu.root"
+    SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+    Weight: "weight"
+    Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 16)"    
+  
+  - Name : NCBackground
+    Tree: "snd_0mu_summary"
+    #SamplePath: "snd_0mu_summaryTree_nu.root"
+    SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+    Weight: "weight"
+    Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 0)"
+
+Systematics:
+# Shape systenatic b parameter for electron signal
+  - Name: "B_0_75_GeV_Syst"
+    Up:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_e_0_75_up"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+    Down:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_e_0_75_down"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+    Type: "NormPlusShape"
+    Samples: "Signal"
+  - Name: "B_75_125_GeV_Syst"
+    Up:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_e_75_125_up"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+    Down:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_e_75_125_down"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+    Type: "NormPlusShape"
+    Samples: "Signal"
+  - Name: "B_125_175_GeV_Syst"
+    Up:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_e_125_175_up"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+    Down:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_e_125_175_down"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+    Type: "NormPlusShape"
+    Samples: "Signal"
+  - Name: "B_175_225_GeV_Syst"
+    Up:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_e_175_225_up"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+    Down:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_e_175_225_down"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+    Type: "NormPlusShape"
+    Samples: "Signal"
+  - Name: "B_225_275_GeV_Syst"
+    Up:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_e_225_275_up"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+    Down:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_e_225_275_down"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+    Type: "NormPlusShape"
+    Samples: "Signal"
+  - Name: "B_275_infGeV_Syst"
+    Up:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_e_275_inf_up"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+    Down:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_e_275_inf_down"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+    Type: "NormPlusShape"
+    Samples: "Signal"
+  # Shape systematic b parameters for numu background
+  - Name: "B_p_numu_0_140_GeV_Syst"
+    Up:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_p_0_140_up"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 14)"
+    Down:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_p_0_140_down"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 14)"
+    Type: "NormPlusShape"
+    Samples: "NumuBackground"
+    ModifierName: "B_p_0_140_GeV_Syst"
+  - Name: "B_p_NC_0_140_GeV_Syst"
+    Up:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_p_0_140_up"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 0)"
+    Down:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_p_0_140_down"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 0)"
+    Type: "NormPlusShape"
+    Samples: "NCBackground"
+    ModifierName: "B_p_0_140_GeV_Syst"
+
+  - Name: "B_p_numu_140_240_GeV_Syst"
+    Up:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_p_140_240_up"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 14)"
+    Down:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_p_140_240_down"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 14)"
+    Type: "NormPlusShape"
+    Samples: "NumuBackground"
+    ModifierName: "B_p_140_240_GeV_Syst"
+  - Name: "B_p_NC_140_240_GeV_Syst"
+    Up:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_p_140_240_up"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 0)"
+    Down:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_p_140_240_down"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 0)"
+    Type: "NormPlusShape"
+    Samples: "NCBackground"
+    ModifierName: "B_p_140_240_GeV_Syst"
+
+  - Name: "B_p_numu_240_inf_GeV_Syst"
+    Up:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_p_240_inf_up"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 14)"
+    Down:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_p_240_inf_down"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 14)"
+    Type: "NormPlusShape"
+    Samples: "NumuBackground"
+    ModifierName: "B_p_240_inf_GeV_Syst"
+  # Shape systematic b parameters for NC background
+  - Name: "B_p_NC_240_inf_GeV_Syst"
+    Up:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_p_240_inf_up"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 0)"
+    Down:
+      #SamplePath: "snd_0mu_summaryTree_nu.root"
+      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      Tree: "dens_sel_p_240_inf_down"
+      Weight: "weight"
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 0)"
+    Type: "NormPlusShape"
+    Samples: "NCBackground" 
+    ModifierName: "B_p_240_inf_GeV_Syst"
+
+# Selection efficiency systematics nueCC signal
+  - Name: "US_QDC_Syst_2022"
+    Up:
+      Normalization: 0
+    Down:
+      Normalization: -0.4133
+    Type: "Normalization"
+    Regions: ["Signal_region_2022"]
+    Samples: "Signal"
+    ModifierName: "US_QDC_Syst"
+  - Name: "US_QDC_Syst_2024"
+    Up:
+      Normalization: 0
+    Down:
+      Normalization: -0.3529 # 100-35.29/100
+    Type: "Normalization"
+    Regions: ["Signal_region_2024"]
+    Samples: "Signal"
+    ModifierName: "US_QDC_Syst"
+  - Name : "MinSciFiHits_Syst_2022"
+    Up:
+      Normalization: 0.011
+    Down:
+      Normalization: -0.011 #100-1.1/100
+    Type: "Normalization"
+    Regions: ["Signal_region_2022"]
+    Samples: "Signal"
+    ModifierName: "MinSciFiHits_Syst"
+  - Name : "MinSciFiHits_Syst_2024"
+    Up:
+      Normalization: 0.007
+    Down:
+      Normalization: -0.007 #100-0.7/100
+    Type: "Normalization"
+    Regions: ["Signal_region_2024"]
+    Samples: "Signal"
+    ModifierName: "MinSciFiHits_Syst"
+  - Name : "ScifiFiducial_Syst_2022"
+    Up:
+      Normalization: 0.108
+    Down:
+      Normalization: -0.10
+    Type: "Normalization"
+    Regions: ["Signal_region_2022"]
+    Samples: "Signal"
+    ModifierName: "ScifiFiducial_Syst"
+  - Name : "ScifiFiducial_Syst_2024"
+    Up:
+      Normalization: 0.101
+    Down:
+      Normalization: -0.095
+    Type: "Normalization"
+    Regions: ["Signal_region_2024"]
+    Samples: "Signal"
+    ModifierName: "ScifiFiducial_Syst"
+
+  # Selection efficiency systematics numuCC and NC background
+  - Name: "US_QDC_Syst_numu_NC"
+    Up:
+      Normalization: 0
+    Down:
+      Normalization: -0.33
+    Type: "Normalization"
+    Samples: ["NumuBackground", "NCBackground"]
+    ModifierName: "US_QDC_Syst"
+  - Name : "MinSciFiHits_Syst_numu_NC"
+    Up:
+      Normalization: 0.029
+    Down:
+      Normalization: -0.026
+    Type: "Normalization"
+    Samples: ["NumuBackground", "NCBackground"]
+    ModifierName: "MinSciFiHits_Syst"
+  - Name : "ScifiFiducial_Syst_numu_NC"
+    Up:
+      Normalization: 0.054
+    Down:
+      Normalization: -0.071
+    Type: "Normalization"
+    Samples: ["NumuBackground", "NCBackground"]
+    ModifierName: "ScifiFiducial_Syst"
+
+# Other systematics s 
+  - Name: "s_systematic_electron"
+    Up:
+      Normalization: 1
+    Down:
+      Normalization: 1
+    Type: "NormPlusShape"
+    Samples: "Signal"
+  - Name: "s_systematic_NC"
+    Up:
+      Normalization: 1
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 0)"
+    Down:
+      Normalization: 1
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 0)"
+    Type: "NormPlusShape"
+    Samples: ["NCBackground"]
+  - Name: "s_systematic_numu"
+    Up:
+      Normalization: 1
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 14)"
+    Down:
+      Normalization: 1
+      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 14)"
+    Type: "NormPlusShape"
+    Samples: ["NumuBackground"]
+  - Name: "NumuCCSyst"
+    Up:
+      Normalization: 0.182
+    Down:
+      Normalization: 0.182
+    Type: "Normalization"
+    Samples: ["NumuBackground", "NCBackground"]
+  - Name: "HadronSyst"
+    Up:
+      Normalization: 1.0
+    Down:
+      Normalization: 1.0
+    Type: "Normalization"
+    Samples: "HadronBackground"
+  - Name: "NutauSyst"
+    Up:
+      Normalization: 1.0
+    Down:
+      Normalization: 1.0
+    Type: "Normalization"
+    Samples: "NutauBackground"
+
+NormFactors:
+  - Name: "Signal_norm"
+    Samples: "Signal"
+    Nominal: 1
+    Bounds: [0, 10]
+  - Name: "Luminosity_Scale_2022"
+    Samples: ["Signal", "Data", "HadronBackground", "NCBackground", "NumuBackground", "NutauBackground"]
+     # Nominal is the desired scale factor (e.g., 68.55 fb^-1 / 1 fb^-1)
+    Regions: ["Signal_region_2022"]
+    Nominal: 1
+    Bounds: [0, 10000]
+  - Name: "Luminosity_Scale_2024"
+    Regions: ["Signal_region_2024"]
+     # Nominal is the desired scale factor (e.g., 118.6 fb^-1 / 1 fb^-1)
+    Samples: ["Signal", "Data", "HadronBackground", "NCBackground", "NumuBackground", "NutauBackground"]
+    Nominal: 1  # 20 for trial, 118.6 for final
+    Bounds: [0, 10000]
