@@ -80,7 +80,7 @@ Systematics:
       Tree: "dens_sel_e_0_75_down"
       Weight: "weight"
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: "Signal"
   - Name: "B_75_125_GeV_Syst"
     Up:
@@ -88,6 +88,7 @@ Systematics:
       SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
       Tree: "dens_sel_e_75_125_up"
       Weight: "weight"
+      
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
     Down:
       #SamplePath: "snd_0mu_summaryTree_nu.root"
@@ -95,7 +96,7 @@ Systematics:
       Tree: "dens_sel_e_75_125_down"
       Weight: "weight"
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: "Signal"
   - Name: "B_125_175_GeV_Syst"
     Up:
@@ -110,7 +111,7 @@ Systematics:
       Tree: "dens_sel_e_125_175_down"
       Weight: "weight"
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: "Signal"
   - Name: "B_175_225_GeV_Syst"
     Up:
@@ -125,7 +126,7 @@ Systematics:
       Tree: "dens_sel_e_175_225_down"
       Weight: "weight"
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: "Signal"
   - Name: "B_225_275_GeV_Syst"
     Up:
@@ -140,7 +141,7 @@ Systematics:
       Tree: "dens_sel_e_225_275_down"
       Weight: "weight"
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: "Signal"
   - Name: "B_275_infGeV_Syst"
     Up:
@@ -155,7 +156,7 @@ Systematics:
       Tree: "dens_sel_e_275_inf_down"
       Weight: "weight"
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: "Signal"
   # Shape systematic b parameters for numu background
   - Name: "B_p_numu_0_140_GeV_Syst"
@@ -171,7 +172,7 @@ Systematics:
       Tree: "dens_sel_p_0_140_down"
       Weight: "weight"
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 14)"
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: "NumuBackground"
     ModifierName: "B_p_0_140_GeV_Syst"
   - Name: "B_p_NC_0_140_GeV_Syst"
@@ -187,7 +188,7 @@ Systematics:
       Tree: "dens_sel_p_0_140_down"
       Weight: "weight"
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 0)"
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: "NCBackground"
     ModifierName: "B_p_0_140_GeV_Syst"
 
@@ -204,7 +205,7 @@ Systematics:
       Tree: "dens_sel_p_140_240_down"
       Weight: "weight"
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 14)"
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: "NumuBackground"
     ModifierName: "B_p_140_240_GeV_Syst"
   - Name: "B_p_NC_140_240_GeV_Syst"
@@ -220,7 +221,7 @@ Systematics:
       Tree: "dens_sel_p_140_240_down"
       Weight: "weight"
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 0)"
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: "NCBackground"
     ModifierName: "B_p_140_240_GeV_Syst"
 
@@ -237,7 +238,7 @@ Systematics:
       Tree: "dens_sel_p_240_inf_down"
       Weight: "weight"
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 14)"
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: "NumuBackground"
     ModifierName: "B_p_240_inf_GeV_Syst"
   # Shape systematic b parameters for NC background
@@ -254,7 +255,7 @@ Systematics:
       Tree: "dens_sel_p_240_inf_down"
       Weight: "weight"
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 0)"
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: "NCBackground" 
     ModifierName: "B_p_240_inf_GeV_Syst"
 
@@ -346,7 +347,7 @@ Systematics:
       Normalization: 1
     Down:
       Normalization: 1
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: "Signal"
   - Name: "s_systematic_NC"
     Up:
@@ -355,7 +356,7 @@ Systematics:
     Down:
       Normalization: 1
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 0)"
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: ["NCBackground"]
   - Name: "s_systematic_numu"
     Up:
@@ -364,7 +365,7 @@ Systematics:
     Down:
       Normalization: 1
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 14)"
-    Type: "Normalization"
+    Type: "NormPlusShape"
     Samples: ["NumuBackground"]
   - Name: "NumuCCSyst"
     Up:
