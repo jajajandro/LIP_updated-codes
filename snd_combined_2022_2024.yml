@@ -7,21 +7,21 @@ General:
 
   Fixed:
     - Name: "Luminosity_Scale_2022" # Must match the NormFactor name
-      Value: 0.08 # Set this to the desired luminosity scale for 2022
+      Value: 1 # Set this to the desired luminosity scale for 2022
     - Name: "Luminosity_Scale_2024" # Must match the NormFactor name
-      Value: 0.12  # Set this to the desired luminosity scale for 2024 (20 for trial, 118.6 for final)
+      Value: 1  # Set this to the desired luminosity scale for 2024 (20 for trial, 118.6 for final)
 
 Regions:
   - Name: "Signal_region_2022"
     RegionPath: "2022"
     Variable: "dens_sel"
     Filter: "(dens_sel2 >= 20) & (dens_sel > 11000)"
-    Binning: [11000,  40000] 
+    Binning: [11000, 14000, 17000, 25000, 30000, 40000] 
   - Name: "Signal_region_2024"
     RegionPath: "2024"
     Variable: "dens_sel"
     Filter: "(dens_sel2 >= 20) & (dens_sel > 11000)"
-    Binning: [11000, 40000]
+    Binning: [11000, 14000, 17000, 25000, 30000, 40000]
 
 Samples:
   # Data and HadronBackground must be assigned to ALL regions they are used in.
@@ -88,7 +88,6 @@ Systematics:
       SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
       Tree: "dens_sel_e_75_125_up"
       Weight: "weight"
-      
       Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
     Down:
       #SamplePath: "snd_0mu_summaryTree_nu.root"
@@ -393,16 +392,16 @@ NormFactors:
   - Name: "Signal_norm"
     Samples: "Signal"
     Nominal: 1
-    Bounds: [0, 100]
+    Bounds: [0, 10]
   - Name: "Luminosity_Scale_2022"
     Samples: ["Signal", "Data", "HadronBackground", "NCBackground", "NumuBackground", "NutauBackground"]
      # Nominal is the desired scale factor (e.g., 68.55 fb^-1 / 1 fb^-1)
     Regions: ["Signal_region_2022"]
-    Nominal: 0.08
+    Nominal: 1
     Bounds: [0, 10000]
   - Name: "Luminosity_Scale_2024"
     Regions: ["Signal_region_2024"]
      # Nominal is the desired scale factor (e.g., 118.6 fb^-1 / 1 fb^-1)
     Samples: ["Signal", "Data", "HadronBackground", "NCBackground", "NumuBackground", "NutauBackground"]
-    Nominal: 0.12  # 20 for trial, 118.6 for final
+    Nominal: 1  # 20 for trial, 118.6 for final
     Bounds: [0, 10000]
