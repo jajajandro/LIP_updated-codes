@@ -67,21 +67,21 @@ Samples:
 
 Systematics:
 # Shape systenatic b parameter for electron signal
-  - Name: "B_0_75_GeV_Syst"
-    Up:
+  #- Name: "B_0_75_GeV_Syst"
+   # Up:
       #SamplePath: "snd_0mu_summaryTree_nu.root"
-      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
-      Tree: "dens_sel_e_0_75_up"
-      Weight: "weight"
-      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
-    Down:
+     # SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      #Tree: "dens_sel_e_0_75_up"
+      #Weight: "weight"
+      #Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+    #Down:
       #SamplePath: "snd_0mu_summaryTree_nu.root"
-      SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
-      Tree: "dens_sel_e_0_75_down"
-      Weight: "weight"
-      Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
-    Type: "NormPlusShape"
-    Samples: "Signal"
+      #SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
+      #Tree: "dens_sel_e_0_75_down"
+      #Weight: "weight"
+      #Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
+    #Type: "NormPlusShape"
+    #Samples: "Signal"
   - Name: "B_75_125_GeV_Syst"
     Up:
       #SamplePath: "snd_0mu_summaryTree_nu.root"
