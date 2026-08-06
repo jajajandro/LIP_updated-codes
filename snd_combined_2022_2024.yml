@@ -403,7 +403,7 @@ NormFactors:
     Regions: ["Signal_region_2022"]
     Nominal: 1
     Bounds: [0, 10000]
-  - Name: "Luminosity_Scale_2024_stand"
+  - Name: "Luminosity_Scale_2024_stan"
     Regions: ["Signal_region_2024"]
      # Nominal is the desired scale factor (e.g., 118.6 fb^-1 / 1 fb^-1)
     Samples: ["Signal", "Data", "HadronBackground"]
