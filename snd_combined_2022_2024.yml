@@ -393,15 +393,27 @@ NormFactors:
     Samples: "Signal"
     Nominal: 1
     Bounds: [0, 10]
-  - Name: "Luminosity_Scale_2022"
-    Samples: ["Signal", "Data", "HadronBackground", "NCBackground", "NumuBackground", "NutauBackground"]
+  - Name: "Luminosity_Scale_2022_stan"
+    Samples: ["Signal", "Data", "HadronBackground"]
      # Nominal is the desired scale factor (e.g., 68.55 fb^-1 / 1 fb^-1)
     Regions: ["Signal_region_2022"]
     Nominal: 1
     Bounds: [0, 10000]
-  - Name: "Luminosity_Scale_2024"
+  - Name: "Luminosity_Scale_2024_stand"
     Regions: ["Signal_region_2024"]
      # Nominal is the desired scale factor (e.g., 118.6 fb^-1 / 1 fb^-1)
-    Samples: ["Signal", "Data", "HadronBackground", "NCBackground", "NumuBackground", "NutauBackground"]
+    Samples: ["Signal", "Data", "HadronBackground"]
     Nominal: 1  # 20 for trial, 118.6 for final
     Bounds: [0, 10000]
+  - Name: "Luminosity_Scale_2022_MC"
+    Samples: ["NCBackground", "NumuBackground", "NutauBackground"]
+     # Nominal is the desired scale factor (e.g., 68.55 fb^-1 / 1 fb^-1)
+    Regions: ["Signal_region_2022"]
+    Nominal: 102
+    Bounds: [0, 10000]
+  - Name: "Luminosity_Scale_2024_MC"
+    Regions: ["Signal_region_2024"]
+     # Nominal is the desired scale factor (e.g., 118.6 fb^-1 / 1 fb^-1)
+    Samples: ["NCBackground", "NumuBackground", "NutauBackground"]
+    Nominal: 102  # 20 for trial, 118.6 for final
+    Bounds: [0, 10000]  
