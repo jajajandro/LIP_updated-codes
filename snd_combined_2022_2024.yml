@@ -42,28 +42,28 @@ Samples:
     Weight: "weight"
 
   - Name: "Signal"
-    Tree: "snd_0mu_summary"
+    Tree: "snd_0mu_summaryTree"
     #SamplePath: "snd_0mu_summaryTree_nu.root"
     SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
     Weight: "weight"
     Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 12)"
 
   - Name: "NumuBackground"
-    Tree: "snd_0mu_summary"
+    Tree: "snd_0mu_summaryTree"
     #SamplePath: "snd_0mu_summaryTree_nu.root"
     SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
     Weight: "weight"
     Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 14)"
   
   - Name: "NutauBackground"
-    Tree: "snd_0mu_summary"
+    Tree: "snd_0mu_summaryTree"
     #SamplePath: "snd_0mu_summaryTree_nu.root"
     SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
     Weight: "weight"
     Filter: "(dens_sel2 >= 20) & (dens_sel > 11000) & (cc == 1) & (abs(pdg) == 16)"    
   
   - Name : NCBackground
-    Tree: "snd_0mu_summary"
+    Tree: "snd_0mu_summaryTree"
     #SamplePath: "snd_0mu_summaryTree_nu.root"
     SamplePath: "snd_0mu_summaryTree_nu_MCreweight.root"
     Weight: "weight"
