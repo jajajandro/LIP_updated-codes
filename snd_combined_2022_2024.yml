@@ -11,9 +11,9 @@ General:
     - Name: "Luminosity_Scale_2024_stan" # Must match the NormFactor name
       Value: 1  # Set this to the desired luminosity scale for 2024 (20 for trial, 118.6 for final)
     - Name: "Luminosity_Scale_2022_MC" # Must match the NormFactor name
-      #Value: 102 # Set this to the desired luminosity scale for 2022
+      Value: 102 # Set this to the desired luminosity scale for 2022
     - Name: "Luminosity_Scale_2024_MC" # Must match the NormFactor name
-      #Value: 102  # Set this to the desired luminosity scale for 2024 (20 for trial, 118.6 for final)  
+      Value: 102  # Set this to the desired luminosity scale for 2024 (20 for trial, 118.6 for final)  
 
 Regions:
   - Name: "Signal_region_2022"
@@ -411,13 +411,13 @@ NormFactors:
     Bounds: [0, 10000]
   - Name: "Luminosity_Scale_2022_MC"
     Samples: ["NCBackground", "NumuBackground", "NutauBackground"]
-      Nominal is the desired scale factor (e.g., 68.55 fb^-1 / 1 fb^-1)
+      #Nominal is the desired scale factor (e.g., 68.55 fb^-1 / 1 fb^-1)
     Regions: ["Signal_region_2022"]
     Nominal: 102
     Bounds: [0, 10000]
   - Name: "Luminosity_Scale_2024_MC"
     Regions: ["Signal_region_2024"]
-      Nominal is the desired scale factor (e.g., 118.6 fb^-1 / 1 fb^-1)
+      #Nominal is the desired scale factor (e.g., 118.6 fb^-1 / 1 fb^-1)
     Samples: ["NCBackground", "NumuBackground", "NutauBackground"]
     Nominal: 102  # 20 for trial, 118.6 for final
     Bounds: [0, 10000]  
